@@ -6,8 +6,24 @@ var Engine = require('famous/core/Engine');
 var Surface = require('famous/core/Surface');
 var HeaderFooterLayout = require("famous/views/HeaderFooterLayout");
 var GridLayout = require("famous/views/GridLayout");
+var Transform = require('famous/core/Transform');
+var StateModifier = require('famous/modifiers/StateModifier');
 
 var mainContext = Engine.createContext();
+
+var stateModifier = new StateModifier({
+  transform: Transform.translate(10, 0, 0)
+});
+
+var bootsymbol = new Surface({
+ size: [, 80],
+ content: '<h1>Bootstap Famo.us</h1>',
+   properties: {
+    color: 'white',
+    textAlign: 'center',
+    backgroundColor: '#FA5C4F'
+  }
+});
 
 var layout;
 
@@ -23,11 +39,12 @@ function createLayout() {
   });
 
   mainContext.add(layout);
+  mainContext.add(stateModifier).add(bootsymbol);
 }
 
 function addHeader() {
   layout.header.add(new Surface({
-    content: "Header",
+    content: "",
     classes: ["grey-bg"],
     properties: {
       lineHeight: "70px",
@@ -37,7 +54,14 @@ function addHeader() {
 }
 
 function addContent() {
-  layout.content.add(createGrid( 'content', [2, 1] ));
+  layout.content.add(new Surface({
+    content: "B F",
+    properties: {
+      lineHeight: "70px",
+      background : 'clear',
+      textAlign: "center"
+    }
+  }));
 }
 
 function addFooter() {
@@ -66,4 +90,5 @@ function createGrid( section, dimensions ) {
   
   return grid;
 }
+
 });
