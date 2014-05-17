@@ -1,7 +1,7 @@
 /* globals define */
 define(function(require, exports, module) {
     'use strict';
-    // import dependencies
+// import dependencies
 var Engine = require('famous/core/Engine');
 var Surface = require('famous/core/Surface');
 var HeaderFooterLayout = require("famous/views/HeaderFooterLayout");
@@ -55,13 +55,23 @@ function addHeader() {
 
 function addContent() {
   layout.content.add(new Surface({
-    content: "B F",
+    content: "<img src='../content/images/famous_logo.png'>",
     properties: {
-      lineHeight: "70px",
+      lineHeight: "30px",
       background : 'clear',
-      textAlign: "center"
+      textAlign: "left"
     }
   }));
+
+    layout.content.add(new Surface({
+    content: "<img src='../content/images/bootstrap_illustration.png'>",
+    properties: {
+      lineHeight: "30px",
+      background : 'clear',
+      textAlign: "right"
+    }
+  }));
+
 }
 
 function addFooter() {
@@ -81,7 +91,7 @@ function createGrid( section, dimensions ) {
       content: section + ' ' + (i + 1),
       size: [undefined, undefined],
       properties: {
-        backgroundColor: "hsl(" + (i * 360 / 8) + ", 100%, 50%)",
+        backgroundColor: "hsl(" + (i * 360 / 3) + ", 90%, 50%)",
         color: "#404040",
         textAlign: 'center'
       }
